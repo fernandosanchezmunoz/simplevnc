@@ -1,29 +1,21 @@
+#!/bin/bash
 export DISPLAY=:0
-wname="sample wine app"
 
 su -c "chown winer -R /home/winer" root
 
-if [ -f "~/firstran" ]
-then
-    echo "[$wname]: Using previous configuration."
+mkdir ~/.vnc
+
+VNC_PASSWORD_FILE=~/.vnc/passwd
+
+DEFAULT_ROOTPASSWORD=changeme
+if [ ${ROOTPASSWORD} ]; then
+  echo $ROOTPASSWORD | vncpasswd -f > $VNC_PASSWORD_FILE
 else
-    echo "[$wname]: First run configuration."
-    passw=$(pwgen 8)
-    echo "[$wname]: VNC password: $passw"
-    mkdir ~/.vnc
-    echo "$passw" | vncpasswd -f > ~/.vnc/passwd
-    winetricks -q settings windowmanagerdecorated=n windowmanagermanaged=n
-    touch ~/firstran
+  echo $DEFAULT_ROOTPASSWORD | vncpasswd -f > $VNC_PASSWORD_FILE
 fi
-while :
-do
-    echo "[$wname]: Starting."
-    Xvfb -screen 0 800x600x16 &
-    sleep 2
-    x0vncserver -display $DISPLAY -passwordfile ~/.vnc/passwd -rfbport 5900 &
-    wine notepad.exe
-    killall x0vncserver
-    killall xvfb
-done
-echo "[$wname]: Exiting."```
+chmod 600 $VNC_PASSWORD_FILE
+
+winetricks -q settings windowmanagerdecorated=n windowmanagermanaged=n
+Xvfb -screen 0 800x600x16 &
+x0vncserver -display $DISPLAY -passwordfile ~/.vnc/passwd -rfbport 5900 &
 
