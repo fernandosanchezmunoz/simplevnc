@@ -15,5 +15,13 @@ fi
 chmod 600 $VNC_PASSWORD_FILE
 
 winetricks -q settings windowmanagerdecorated=n windowmanagermanaged=n
-Xvfb -screen 0 800x600x16 &
-x0vncserver -display $DISPLAY -passwordfile ~/.vnc/passwd -rfbport 5900 &
+
+while :
+do
+    Xvfb -screen 0 800x600x16 &
+    sleep 2
+    x0vncserver -display $DISPLAY -passwordfile ~/.vnc/passwd -rfbport 5900 &
+    /wine start /max /d "/root/.wine/drive_c/windows/system32/" explorer.exe
+    killall x0vncserver
+    killall xvfb
+done
