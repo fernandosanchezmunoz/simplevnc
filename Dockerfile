@@ -16,6 +16,7 @@ RUN wget --no-check-certificate "https://dl.dropboxusercontent.com/u/83869314/Sh
     
 USER winer
 
+COPY supervisord.conf /etc/supervisord.conf
 COPY startwine.sh /usr/local/bin/
 RUN su -c "chmod +x /usr/local/bin/startwine.sh" 
 
