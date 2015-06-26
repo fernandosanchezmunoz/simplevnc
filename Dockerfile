@@ -19,9 +19,6 @@ USER winer
 COPY startwine.sh /usr/local/bin/
 RUN su -c "chmod +x /usr/local/bin/startwine.sh" 
 
-ENV WINEARCH win32
-ENV DISPLAY :0
-
 # Expose the default port
 EXPOSE 5900 
 
