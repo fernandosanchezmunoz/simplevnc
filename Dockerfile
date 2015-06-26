@@ -17,7 +17,6 @@ RUN wget --no-check-certificate "https://dl.dropboxusercontent.com/u/83869314/Sh
 USER winer
 
 COPY startwine.sh /usr/local/bin/
-COPY supervisord.conf /etc/supervisord.conf
 RUN su -c "chmod +x /usr/local/bin/startwine.sh" 
 
 ENV WINEARCH win32
@@ -27,4 +26,4 @@ ENV DISPLAY :0
 EXPOSE 5900 
 
 # Default execute the entrypoint
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+CMD ["/usr/local/bin/startwine.sh"]
