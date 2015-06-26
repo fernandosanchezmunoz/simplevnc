@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
 export DISPLAY=:0
 wname="sample wine app"
 
