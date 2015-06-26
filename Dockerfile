@@ -8,12 +8,12 @@ RUN wget --no-check-certificate "https://dl.dropboxusercontent.com/u/83869314/Sh
     apk.static add --allow-untrusted glibc-2.21-r4.apk && \
     wget --no-check-certificate "https://dl.dropboxusercontent.com/u/83869314/ShareX/2015/05/glibc-bin-2.21-r4.apk" && \
     apk.static add --allow-untrusted glibc-bin-2.21-r4.apk && \
-    /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib && rm -rf /var/cache/apk/* 
-   
-RUN wget --no-check-certificate https://bintray.com/artifact/download/tigervnc/stable/tigervnc-Linux-i686-1.4.3.tar.gz && tar zxf tigervnc-Linux-i686-1.4.3.tar.gz ./usr -C / && rm tigervnc-Linux-i686-1.4.3.tar.gz && \
-RUN wget --no-check-certificate http://winetricks.org/winetricks && chmod +x winetricks && mv winetricks /usr/bin/winetricks
-
-RUN adduser -D -s /bin/bash winer
+    /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib && \
+    rm -rf /var/cache/apk/* && \
+    wget --no-check-certificate https://bintray.com/artifact/download/tigervnc/stable/tigervnc-Linux-i686-1.4.3.tar.gz && tar zxf tigervnc-Linux-i686-1.4.3.tar.gz ./usr -C / && rm tigervnc-Linux-i686-1.4.3.tar.gz && \
+    wget --no-check-certificate http://winetricks.org/winetricks && chmod +x winetricks && mv winetricks /usr/bin/winetricks && \
+    adduser -D -s /bin/bash winer
+    
 USER winer
 
 COPY startwine.sh /usr/local/bin/
