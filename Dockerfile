@@ -20,6 +20,8 @@ COPY supervisord.conf /etc/supervisord.conf
 COPY start.sh /usr/local/bin/
 RUN su -c "chmod +x /usr/local/bin/start.sh" 
 
+ENV DISPLAY :0
+
 # Expose the default port
 EXPOSE 5900 
 
