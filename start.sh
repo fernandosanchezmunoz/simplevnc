@@ -19,6 +19,6 @@ chmod 600 $VNC_PASSWORD_FILE
 
 winetricks -q settings windowmanagerdecorated=n windowmanagermanaged=n
 
-exec /usr/bin/supervisord -n -c /etc/supervisord.conf
+exec /usr/bin/supervisord -n
 
 exit 0
