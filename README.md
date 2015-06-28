@@ -1,4 +1,4 @@
-docker-centos-vnc-wine
+docker-alpine-vnc-wine
 =====
 
 This container runs:
@@ -9,12 +9,12 @@ This container runs:
 * Explorer.exe - to demo that it works
 
  
-[catataw/centos-vnc-wine](https://registry.hub.docker.com/u/catataw/centos-vnc-wine/) docker image
+[catataw/alpine-vnc-wine](https://registry.hub.docker.com/u/catataw/alpine-vnc-wine/) docker image
 ## Run It
 * root  vnc password，**changeme**
 
-    `docker run -d -p 5900:5900 catataw/centos-vnc-wine`
+    `docker run -d -p 5900:5900 catataw/alpine-vnc-wine`
 
 * root  vnc password，**ROOTPASSWORD**=mypassword
 
-    `docker run -d -p 5900:5900 -e ROOTPASSWORD=<mypassword> catataw/centos-vnc-wine` 
+    `docker run -d -p 5900:5900 -e ROOTPASSWORD=<mypassword> catataw/alpine-vnc-wine` 
