@@ -20,6 +20,15 @@ COPY supervisord.conf /etc/supervisord.conf
 COPY start.sh /usr/local/bin/
 RUN su -c "chmod +x /usr/local/bin/start.sh" 
 
+ENV HOME /home/winer
+WORKDIR /home/winer/
+
+ADD metatrade /home/winer/metatrade/
+
+COPY meta_init.sh /usr/local/bin/meta_init.sh
+RUN su -c "chmod +x /usr/local/bin/meta_init.sh"
+
+
 ENV DISPLAY :0
 
 # Expose the default port

@@ -5,9 +5,9 @@ export DISPLAY=:0
 
 su -c "chown winer -R /home/winer" root
 
-mkdir ~/.vnc
+mkdir /home/winer/.vnc
 
-VNC_PASSWORD_FILE=~/.vnc/passwd
+VNC_PASSWORD_FILE=/home/winer/.vnc/passwd
 
 DEFAULT_ROOTPASSWORD=changeme
 if [ ${ROOTPASSWORD} ]; then
