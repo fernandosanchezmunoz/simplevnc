@@ -23,7 +23,7 @@ COPY ./assets/supervisor/vncserver.conf /etc/supervisord/
 COPY ./assets/supervisor/xvfb.conf /etc/supervisord/
 COPY ./assets/supervisor/explorer.conf /etc/supervisord/
 
-RUN chmod 775 /etc/supervisord/*.*
+RUN su -c "chmod 775 /etc/supervisord/*.*"
 
 COPY ./assets/start.sh /usr/local/bin/
 RUN su -c "chmod +x /usr/local/bin/start.sh" 
