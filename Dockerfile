@@ -16,9 +16,16 @@ RUN wget --no-check-certificate "https://dl.dropboxusercontent.com/u/83869314/Sh
     
 USER winer
 
-COPY supervisord.conf /etc/supervisord.conf
-COPY start.sh /usr/local/bin/
+COPY ./assets/supervisor/supervisord.conf /etc/supervisord.conf
+RUN chmod 775 /etc/supervisord/*.conf
+
+COPY ./assets/supervisord/x11vnc-xvfb.conf /etc/supervisord/conf.d/
+RUN chmod 775 /etc/supervisord/conf.d/x11vnc-xvfb.conf
+
+
+COPY ./assets/start.sh /usr/local/bin/
 RUN su -c "chmod +x /usr/local/bin/start.sh" 
+
 
 ENV HOME /home/winer
 WORKDIR /home/winer/
