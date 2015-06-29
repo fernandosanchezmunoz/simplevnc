@@ -19,9 +19,9 @@ USER winer
 COPY ./assets/supervisor/supervisord.conf /etc/supervisord.conf
 RUN su -c "mkdir /etc/supervisord/" 
 
-COPY ./assets/supervisord/vncserver.conf /etc/supervisord/
-COPY ./assets/supervisord/xvfb.conf /etc/supervisord/
-COPY ./assets/supervisord/explorer.conf /etc/supervisord/
+COPY ./assets/supervisor/vncserver.conf /etc/supervisord/
+COPY ./assets/supervisor/xvfb.conf /etc/supervisord/
+COPY ./assets/supervisor/explorer.conf /etc/supervisord/
 
 RUN chmod 775 /etc/supervisord/*.*
 
