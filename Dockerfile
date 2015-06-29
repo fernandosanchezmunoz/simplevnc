@@ -23,6 +23,7 @@ RUN su -c "chmod +x /usr/local/bin/start.sh"
 ENV HOME /home/winer
 WORKDIR /home/winer/
 
+ENV WINEARCH win32
 ENV DISPLAY :0
 
 # Expose the default port
