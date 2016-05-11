@@ -3,21 +3,19 @@ set -e
 
 export DISPLAY=:0
 
-su -c "chown winer -R /home/winer" root
+su -c "chown vncer -R /home/vncer" root
 
-mkdir /home/winer/.vnc
+mkdir /home/vncer/.vnc
 
-VNC_PASSWORD_FILE=/home/winer/.vnc/passwd
+VNC_PASSWORD_FILE=/home/vncer/.vnc/passwd
 
-DEFAULT_ROOTPASSWORD=changeme
+DEFAULT_ROOTPASSWORD=deleteme
 if [ ${ROOTPASSWORD} ]; then
   echo $ROOTPASSWORD | vncpasswd -f > $VNC_PASSWORD_FILE
 else
   echo $DEFAULT_ROOTPASSWORD | vncpasswd -f > $VNC_PASSWORD_FILE
 fi
 chmod 600 $VNC_PASSWORD_FILE
-
-winetricks -q settings windowmanagerdecorated=n windowmanagermanaged=n
 
 exec /usr/bin/supervisord -n
 
