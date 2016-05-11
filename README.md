@@ -1,5 +1,9 @@
-docker-alpine-vnc-wine
+simplevnc
 =====
+
+Container image designed to provide interactive access to a minimalistic graphical interface through a web browser.
+
+Based on Alpine linux and a VNC server.
 
 This container runs:
 
@@ -9,12 +13,13 @@ This container runs:
 * Explorer.exe - to demo that it works
 
  
-[catataw/alpine-vnc-wine](https://registry.hub.docker.com/u/catataw/alpine-vnc-wine/) docker image
+docker image
+
 ## Run It
 * root  vnc password，**changeme**
 
-    `docker run -d -p 5900:5900 catataw/alpine-vnc-wine`
+    `docker run -d -p 5900:5900 fernandosanchez/simplevnc`
 
 * root  vnc password，**ROOTPASSWORD**=mypassword
 
-    `docker run -d -p 5900:5900 -e ROOTPASSWORD=<mypassword> catataw/alpine-vnc-wine` 
+    `docker run -d -p 5900:5900 -e ROOTPASSWORD=<mypassword> fernandosanchez/simplevnc` 
