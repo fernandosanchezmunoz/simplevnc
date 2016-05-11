@@ -3,7 +3,7 @@ FROM boggart/alpine-apk-static-32bit
 MAINTAINER Boggart "github.com/Boggart"
 
 RUN ["/sbin/apk.static", "add", "--update", "alpine-base", "pwgen", "xvfb", \
-"linux-pam", "wget","supervisor","perl", "alpine-desktop", "xfce4"]
+"linux-pam", "wget","supervisor","perl", "xfce4"]
 
 RUN wget --no-check-certificate "https://dl.dropboxusercontent.com/u/83869314/ShareX/2015/05/glibc-2.21-r4.apk" && \
     apk.static add --allow-untrusted glibc-2.21-r4.apk && \
