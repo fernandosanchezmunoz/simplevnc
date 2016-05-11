@@ -3,7 +3,7 @@ FROM boggart/alpine-apk-static-32bit
 MAINTAINER Boggart "github.com/Boggart"
 
 RUN ["/sbin/apk.static", "add", "--update", "alpine-base", "pwgen", "xvfb", \
-"linux-pam", "wget","supervisor","perl", "xfce4"]
+"linux-pam", "wget","supervisor","perl", "fluxbox", "xterm"]
 
 RUN wget --no-check-certificate "https://dl.dropboxusercontent.com/u/83869314/ShareX/2015/05/glibc-2.21-r4.apk" && \
     apk.static add --allow-untrusted glibc-2.21-r4.apk && \
@@ -27,14 +27,16 @@ EXPOSE 5900
 
 COPY ./assets/supervisor/supervisord.conf /etc/supervisord.conf
 RUN su -c "mkdir /etc/supervisord/"
+COPY ./assets/supervisor/vncserver.conf   /etc/supervisord/
+COPY ./assets/supervisor/xvfb.conf        /etc/supervisord/
+COPY ./assets/supervisor/fluxbox.conf     /etc/supervisord/
 
-COPY ./assets/supervisor/vncserver.conf /etc/supervisord/
-COPY ./assets/supervisor/xvfb.conf /etc/supervisord/
-COPY ./assets/supervisor/xfce4.conf /etc/supervisord/
+COPY ./assets/startvncserver.sh           /usr/bin
+COPY ./assets/start-vnc-expect-script.sh  /usr/bin
 
 RUN su -c "chmod 775 /etc/supervisord/*.*"
 
-COPY ./assets/start.sh /usr/local/bin/
+COPY ./assets/start.sh                    /usr/local/bin/
 RUN su -c "chmod +x /usr/local/bin/start.sh"
 
 # Default execute the entrypoint
