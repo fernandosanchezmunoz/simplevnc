@@ -14,8 +14,8 @@ This container runs:
 ## Run It
 * root  vnc password，**changeme**
 
-    `docker run -d -p 5900:5900 fernandosanchez/simplevnc-alpine`
+    `docker run -d -p 5900:5900 fernandosanchez/simplevnc`
 
 * root  vnc password，**ROOTPASSWORD**=mypassword
 
-    `docker run -d -p 5900:5900 -e ROOTPASSWORD=<mypassword> fernandosanchez/simplevnc-alpine` 
+    `docker run -d -p 5900:5900 -e ROOTPASSWORD=<mypassword> fernandosanchez/simplevnc` 
